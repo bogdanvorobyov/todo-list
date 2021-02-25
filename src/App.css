@@ -1,38 +1,211 @@
-.App {
-  text-align: center;
+#root{ 
+    width: 100%;
+}
+body{
+    box-sizing: border-box;
+    width: 100%;
+    overflow-x: hidden
+}
+.main{ 
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    min-height: 100vh;
+    color: white;
+    box-sizing: border-box;
+    width: 100%;
+}
+.hidden{ 
+    display: none!important;
+}
+.header-par { 
+    width: 20%;
+    background-color: #524949;
+    align-content: center;
+}
+.home-par { 
+    width: 80%;
+    background-color: #151515;
+    text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.add-new h2  {
+    padding: 1em;
+    margin-top:1em;
+}
+.form-component{ 
+    width: 40%;
+    margin: 0 auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.form-in-tasks div{ 
+    margin: 1em;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.add_task_plus { 
+    font-size:2em;
 }
 
-.App-link {
-  color: #61dafb;
+.add-task div{ 
+    margin-bottom: 1em;
+}
+.form-add-task div{ 
+    margin-bottom: 1em;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+/* navigation */
+
+.nav_ul { 
+    list-style-type: none; 
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    align-content: flex-start;
+    margin-top:20%;
+    font-size: 1.5em;
+    padding: 0 1em
+}
+.nav_ul li { 
+    margin-bottom: 0.5em;
+    text-align: center;
+}
+.nav_ul img { 
+    width: 30%;
+    height: auto;
+}
+.nav_ul li a{ 
+    color: white;
+    text-decoration: none;
+}
+.nav_ul li a:active{ 
+    color:rgb(243, 187, 243);
+}
+.nav_ul li a:hover{
+    color: rgb(243, 207, 141);
+}
+
+
+/* add task */
+.add-new .icon-plus-circle{ 
+    align-content: flex-end;
+    text-align: right;
+    margin-bottom: 1em;
+
+}
+.add-new .bi-plus-circle-fill{ 
+    font-size: 2em;
+    align-self: right;
+    margin-right: 1.25em;
+}
+.form-reuse{ 
+    display: flex;
+    align-content: space-around;
+    font-size: 0.5em;
+    
+}
+.form-reuse div:first-child{ 
+    margin-left: 4.5em;
+}
+.form-reuse div:last-child{ 
+    margin-right: 4.5em;
+}
+.form-reuse textarea{ 
+    height: 1em;
+}
+.form-in-tasks{ 
+    width: 92%;
+    text-align: center;
+}
+.input-border{ 
+    border: 1px solid red;
+}
+
+/* tasks */
+.task-view { 
+    display: flex;
+    background-color:rgb(116, 112, 136);
+    padding: 0.75em 1em;
+    margin: 1.5em 3em;
+    font-size: 0.75em;
+    border-radius: 2px;
+    line-height: 1em;
+    vertical-align: middle;
+}
+.task-view:hover{ 
+    background-color:rgb(148, 140, 140);
+    transition: all 0.2s;
+    border-radius: 3px;
+
+}
+.task-name{ 
+    width: 20%;
+}
+.task-text { 
+    width:60%;
+   
+}
+.task-more-overflow{ 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.status-bar{
+    width: 15%;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    line-height: 2em;
+}
+.bi-chevron-down{ 
+    font-size: 1.75em;
+    padding-right:0.3em;
+    padding-top: 0.3em;
+}
+.icon-task{
+    font-size: 1.5em;
+}
+.bi:hover{ 
+    color:rgb(100, 97, 97);
+}
+.task-done{ 
+    background-color: rgb(53, 50, 50);
+}
+.task-in-progress{ 
+    background-color: rgb(45, 72, 124);
+}
+.date-create{ 
+    padding: 0.5em;
+    font-weight: bolder;
+}
+.icon-rotate{ 
+    transform: rotate(180deg);
+}
+
+/* Select status */
+.status-par{ 
+    display: flex;
+    align-content:flex-start;
+    margin: 1.5em 2.25em;
+    line-height:2em;
+
+}
+.status-select{ 
+    width: 30%;
+    text-align: center;
+    margin: 0 1em;
+    height: 2em;
+    line-height: 0.5em;
+    background-color: transparent;
+    color:white;
+    border-bottom: 1px solid white;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+}
+.bi-filter { 
+    font-size: 2em;
 }
