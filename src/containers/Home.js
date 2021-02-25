@@ -13,10 +13,7 @@ const Home = (props) => {
     const filter_category = props.category;
     let sortering_category = 'all'
      
-
-
     useEffect(()=>{
-        console.log(sortering_category)
         dispatch(sortering(sortering_category))
       },[filter_category]) 
 

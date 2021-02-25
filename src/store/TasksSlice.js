@@ -35,7 +35,6 @@ export const TaskSlice = createSlice({
             state.task[data.payload].status = 'В процессе';   
         },
         sortering: (state,data)=> { 
-            console.log(data.payload)
             switch (data.payload) {
                 case 'not-done': state.sortering = 'Нужно выполнить';
                 break;
