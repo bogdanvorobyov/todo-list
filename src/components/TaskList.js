@@ -1,26 +1,26 @@
 import React from 'react'
 import MoreInfo from '../containers/MoreInfo'
-import PropTypes from 'prop-types';
 
 
 const TaskList = (props) => {
-    // JSON.parse(localStorage.getItem('reduxState'))
-    // Filter of task
     const res = props.task.filter(item => {
         return item!== undefined && item!== null
      })
-    const res_sortering = res.filter(item=>{
+    const res_category_filter =  res.filter(item=>{
+        return item.category === props.filter_category
+    })
+    const res_sortering = res_category_filter.reverse().filter(item=>{
         if (props.sort === ''){ 
             return true
         }
         else return item.status === props.sort 
     })
-    console.log(res_sortering)
+
     return (
         <div>
             {res_sortering.map(item=> 
                 <div className={item.styles+' task-view'} key={item.id}>
-                    <MoreInfo props={props} item={item}/>
+                    <MoreInfo item={item}/>
                     <div className ={item.styleOver + ' task-name'} key={item.name+ new Date().toDateString}>Название: {item.name}
                     <br/>   
                     <div className={item.hidden_info+' date-create'}>Дата создания:{item.date}</div>

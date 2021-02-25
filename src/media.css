@@ -1,0 +1,49 @@
+@media (max-width: 760px) { 
+    .main{ 
+        flex-direction: column;
+    }
+    .header-par{ 
+        font-size: 0.7em;
+        width: 100%;
+    }
+    .home-par{ 
+        width: 100%;
+    }
+    
+    nav{ 
+        margin-top: 0;
+        
+    }
+    .form-reuse { 
+        display: block;
+    }
+    .form-reuse div {
+        width: 80%;
+        padding: 0;
+        align-items: center;
+        margin: 1em auto;
+    }
+    .form-reuse div:first-child { 
+        margin-left: auto;
+    }
+    .selecting  {
+        text-align: center;
+        align-content: center;
+    }
+    .form-component{ 
+        width: 60%;
+    }
+    .form-in-tasks  {
+        width: 100%;
+    }
+    .status-select{ 
+        width:70%
+    }
+    .task-view { 
+        flex-wrap: wrap;
+        line-height: 3em;
+    }
+    .task-view div {
+        width: 100%;
+    } 
+}

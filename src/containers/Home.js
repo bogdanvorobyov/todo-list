@@ -1,15 +1,24 @@
-import React from 'react'
-import {selectTasks,taskSort, changeStatus, changeStatusNotDone,changeStatusCss, deleteTask, changeProgress} from '../store/TasksSlice'
+import React, {useEffect} from 'react'
+import {selectTasks,taskSort, changeStatus, changeStatusNotDone,changeStatusCss, deleteTask, changeProgress, sortering } from '../store/TasksSlice'
 import {useSelector, useDispatch} from 'react-redux';
 import SortingTask from '../components/SortingTask';
 import TaskList from '../components/TaskList'
 import AddTask from './AddTask'
 
-const Home = () => {
-
+const Home = (props) => {
+    
     const dispatch = useDispatch()
     const tasks = useSelector(selectTasks)
-    const sortering = useSelector(taskSort)
+    const sorteringState = useSelector(taskSort)
+    const filter_category = props.category;
+    let sortering_category = 'all'
+     
+
+
+    useEffect(()=>{
+        console.log(sortering_category)
+        dispatch(sortering(sortering_category))
+      },[filter_category]) 
 
     let styles = { 
         add : 'hidden', 
@@ -38,9 +47,7 @@ const Home = () => {
         else if(event.target.classList.contains('task_progress')){
             dispatch(changeProgress(task))
             dispatch(changeStatusCss({taskNum:task,taskStyle:'task-in-progress'}))
-
         }
-        
      }
     
     return (
@@ -50,7 +57,7 @@ const Home = () => {
                 <AddTask styles={styles}/>
                 </div>
                 <div className="task_pas" onClick={taskStatus}>
-                <TaskList task={tasks} sort={sortering}/>
+                <TaskList task={tasks} sort={sorteringState} filter_category={filter_category}/>
                 </div>
             </div>
     )

@@ -1,16 +1,17 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
-import {changeStatusOverflow} from '../store/TasksSlice'
+import { useDispatch,useSelector} from 'react-redux'
+import {changeStatusOverflow, selectTasks} from '../store/TasksSlice'
+
 
 const MoreInfo = (props) => {
     const dispatch =useDispatch()
-
+    const task = useSelector(selectTasks)
     const moreInfo =(event)=>{ 
         event.preventDefault()
        
         let tasks = event.target.getAttribute('data-key')
         
-        if (props.props.task[tasks].styleOver === 'task-more-overflow'){ 
+        if (task[tasks].styleOver === 'task-more-overflow'){ 
             dispatch(changeStatusOverflow({taskNum:tasks,taskStyle:'bi-chevron-up',property:'icon'}))
             dispatch(changeStatusOverflow({taskNum:tasks,taskStyle:'',property:'styleOver'}))
             dispatch(changeStatusOverflow({taskNum:tasks,taskStyle:'',property:'hidden_info'}))

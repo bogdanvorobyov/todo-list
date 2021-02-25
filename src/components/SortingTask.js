@@ -14,7 +14,7 @@ const SortingTask = () => {
         dispatch(sortering(filter))
     }
     
-    const showFilter = (event) =>{ 
+    const showFilter = () =>{ 
         selectTask.current.classList.contains('hidden') ?  setStyles(''):setStyles('hidden');
     }
 

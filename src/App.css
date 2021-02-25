@@ -61,16 +61,18 @@ body{
     padding: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: flex-start;
     align-content: flex-start;
-    margin-top:20%;
+    /* margin-top:20%; */
     font-size: 1.5em;
     padding: 0 1em
 }
+nav{ 
+    margin-top: 5em;
+}
 .nav_ul li { 
-    margin-bottom: 0.5em;
-    text-align: center;
+    margin: 0 auto 0.5em auto;
+    /* margin-bottom: 0.5em; */
 }
 .nav_ul img { 
     width: 30%;
@@ -85,6 +87,9 @@ body{
 }
 .nav_ul li a:hover{
     color: rgb(243, 207, 141);
+}
+.is-active { 
+    color: tomato;
 }
 
 

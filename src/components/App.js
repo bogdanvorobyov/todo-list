@@ -7,6 +7,7 @@ import AddTask from '../containers/AddTask'
 import {statetoLocalStorage} from '../store/TasksSlice'
 import {useSelector} from 'react-redux'
 import '../App.css';
+import '../media.css'
 
 function App() {
 
@@ -19,7 +20,7 @@ function App() {
     {'link':'/tomorrow', 'text': 'Завтра'},
     {'link':'/upcomming', 'text': 'Предстоящие'}
   ]
-
+  const category = 'today'
   let styles = { 
     add : '', 
     form: '',
@@ -40,7 +41,7 @@ function App() {
           <Switch> 
           <div className="home-par">
           <Route exact path='/add_task' ><AddTask styles={styles} /></Route>
-          <Route exact path='/' component={Home}></Route>
+          <Route exact path='/'> <Home category={category} /></Route>
           <Route exact path='/tomorrow' component={Tomorrow}></Route>
           <Route exact path='/upcomming' component={Upcomming}></Route>
           </div>

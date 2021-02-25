@@ -1,9 +1,13 @@
 import React from 'react'
+import Home from './Home'
 
 const Tomorrow = () => {
+
+    const category = 'tomorrow'
+
     return (
-        <div className='home-par'>
-           tomorrow 
+        <div>
+           <Home category = {category}/>
         </div>
     )
 }

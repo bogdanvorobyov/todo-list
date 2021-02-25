@@ -1,9 +1,14 @@
 import React from 'react'
+import Home from './Home'
+
 
 const Upcomming = () => {
+
+    const category = 'upcomming'
+
     return (
-        <div className='home-par'>
-            upcomming
+        <div>
+            <Home category ={category}/>
         </div>
     )
 }

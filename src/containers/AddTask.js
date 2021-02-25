@@ -7,7 +7,8 @@ import {add} from '../store/TasksSlice';
 const AddTask = (props) => {
   const [styles,setStyles] = useState(props)
   const [formStyle, setFormStyle] = useState(props.styles.formHidden)
-//   const [inputBorder, setinputBorder] = useState('')
+  const [errorStyleInput, setErrorStyleInput] = useState('hidden')
+  const [errorStyleText, setErrorStyleText] = useState('hidden')
   const task_slice = useSelector(selectTasks)
   const dispatch = useDispatch()
   const form_name = useRef()
@@ -22,37 +23,48 @@ const AddTask = (props) => {
 
   const formHendler = (event) => {
     event.preventDefault()
-    // if (form_name.current.value===''){ 
-    //     console.log(form_name.current.style.border)
-    //     // setinputBorder('input-border')
-    //     // form_name.current.style.border = '1px solid res';
-    //     // form_name.current.style = { 
-    //     //     border: '1px solid res'
-    //     // }
-    //     return false
-    // }
-    // else if (form_text.current.value===''){ 
-    //     return false
-    // }
-    // else{
-    console.log(form_name.current.value)
-    console.log(form_text.current.value)
-      let id_task = task_slice.length; 
-      let task = { 
-          id: id_task,
-          name : event.target.name.value, 
-          category : event.target.date_task.value, 
-          text : event.target.task_decsr.value,
-          status: 'Нужно выполнить',
-          styleOver: 'task-more-overflow',
-          date:today,
-          hidden_info: 'hidden'
-      }
-      dispatch(add(task))
-      event.target.name.value=''
-      event.target.task_decsr.value=''
+    if (form_name.current.value ===''&& form_text.current.value==='' ){
+        form_name.current.classList.add('input-border')
+        form_text.current.classList.add('input-border')
+        setErrorStyleInput('')
+        setErrorStyleText('')
+        return false
+        
     }
-//   }
+    else if (form_name.current.value ===''|| form_text.current.value==='' ){ 
+        if (form_name.current.value ===''){ 
+            form_name.current.classList.add('input-border')
+            setErrorStyleInput('')
+            return false
+        }
+        else{ 
+            form_text.current.classList.add('input-border')
+            setErrorStyleText('')
+            return false
+        }
+    }
+    else{
+        form_name.current.classList.remove('input-border')
+        form_text.current.classList.remove('input-border')
+        setErrorStyleText('hidden')
+        setErrorStyleInput('hidden')
+        let id_task = task_slice.length; 
+        let task = { 
+            id: id_task,
+            name : event.target.name.value, 
+            category : event.target.date_task.value, 
+            text : event.target.task_decsr.value,
+            status: 'Нужно выполнить',
+            styleOver: 'task-more-overflow',
+            date:today,
+            hidden_info: 'hidden'
+        }
+        dispatch(add(task))
+        event.target.name.value=''
+        event.target.task_decsr.value=''
+    }
+}
+
 
     const showForm =()=>{ 
         if(formStyle === 'hidden'){
@@ -72,6 +84,7 @@ const AddTask = (props) => {
            <form action="submit" onSubmit = {formHendler} className={formStyle +' '+styles.styles.form+" form-add-task"} noValidate>
                <div className="selecting">
                  <input type='text' name='name' className ={styles.styles.div + ' form-control'} placeholder='Название' ref={form_name}/>
+                <div className={errorStyleInput}>Введите название задачи</div>
                </div>
                <div className="selecting">
                 <select name="date_task" id="date_task" className = {styles.styles.div + ' form-control'}>
@@ -82,6 +95,7 @@ const AddTask = (props) => {
                </div>
                <div className="selecting">
                     <textarea className ={styles.styles.div + ' form-control'} name="task_decsr" id="task_decs" cols="30" rows="10" placeholder='Описание задачи' ref={form_text}></textarea>
+                    <div className={errorStyleText}>Введите описание задачи</div>
                </div>
                <div><button className="btn btn-primary mb-3" type='sumbit' >Добавить</button></div>
            </form>
